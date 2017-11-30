@@ -1,5 +1,5 @@
-/*****************************
-Copyright 2011 Rafael Muñoz Salinas. All rights reserved.
+/**
+Copyright 2017 Rafael Muñoz Salinas. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, are
 permitted provided that the following conditions are met:
@@ -24,50 +24,23 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 The views and conclusions contained in the software and documentation are those of the
 authors and should not be interpreted as representing official policies, either expressed
 or implied, of Rafael Muñoz Salinas.
-********************************/
-
-#ifndef SVMMARKERS_H
-#define SVMMARKERS_H
-
-#include "../markerlabeler.h"
+*/
 
 
-namespace aruco {
+
+#ifndef __OPENARUCO_CORE_TYPES_H__
+#define __OPENARUCO_CORE_TYPES_H__
+
+#if !defined _CRT_SECURE_NO_DEPRECATE && _MSC_VER > 1300
+#define _CRT_SECURE_NO_DEPRECATE /* to avoid multiple Visual Studio 2005 warnings */
+#endif
 
 
-/**
- * SVM Marker Detector Class
- *
- *
- */
-namespace impl{
-    class SVMMarkers;
-}
-
-class   SVMMarkers: public MarkerLabeler {
-    impl::SVMMarkers *_impl;
-  public:
-
-    SVMMarkers();
-    virtual ~SVMMarkers(){}
-    /**
-     * @brief getName
-     * @return
-     */
-    std::string getName()const{return "SVM";}
-
-    //loads the svm file that detects the markers
-    bool load(std::string path="")throw (cv::Exception);
-    /**
-     * Detect marker in a canonical image.
-     * Return marker id in 0 rotation, or -1 if not found
-     * Assign the detected rotation of the marker to nRotation
-     */
-     bool detect(const cv::Mat &in, int & marker_id,int &nRotations) ;
-     int getBestInputSize();
-};
-
-}
+#if (defined WIN32 || defined _WIN32 || defined WINCE) && defined ARUCO_DSO_EXPORTS
+#define ARUCO_EXPORT __declspec(dllexport)
+#else
+#define ARUCO_EXPORT
+#endif
 
 
-#endif // SVMMARKERS_H
+#endif

@@ -6,6 +6,10 @@
     <ClCompile>
       <AdditionalIncludeDirectories>$(OF_ROOT)/addons/ofxArUco/libs/aruco/include;$(OF_ROOT)/addons/ofxArUco/src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
+    <Link>
+      <AdditionalDependencies>aruco3112.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(OF_ROOT)\addons\ofxArUco\libs\aruco\lib\vs\$(Platform)\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
   </ItemDefinitionGroup>
   <ItemGroup />
 </Project>

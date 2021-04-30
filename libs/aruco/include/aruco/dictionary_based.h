@@ -29,8 +29,8 @@ or implied, of Rafael Muñoz Salinas.
 #ifndef ArucoDictionaryBasedMarkerDetector_H
 #define ArucoDictionaryBasedMarkerDetector_H
 
-#include "../dictionary.h"
-#include "../markerlabeler.h"
+#include "dictionary.h"
+#include "markerlabeler.h"
 
 #include <opencv2/core/core.hpp>
 namespace aruco
@@ -48,13 +48,15 @@ namespace aruco
         void setParams(const Dictionary& dic, float max_correction_rate);
 
         // main virtual class to o detection
-        bool detect(const cv::Mat& in, int& marker_id, int& nRotations,std::string &additionalInfo);
+       virtual bool detect(const cv::Mat& in, int& marker_id, int& nRotations,std::string &additionalInfo);
         // returns the dictionary name
-        std::string getName() const;
+       virtual std::string getName() const;
 
-        int getNSubdivisions()const{return _nsubdivisions;}//
+        virtual int getNSubdivisions()const{return _nsubdivisions;}//
 
+        std::vector<Dictionary> getDictionaries()const{return vdic;}
     private:
+        //obfuscate start
          bool getInnerCode(const cv::Mat& thres_img, int total_nbits, std::vector<uint64_t>& ids);
         cv::Mat rotate(const cv::Mat& in);
         uint64_t touulong(const cv::Mat& code);
@@ -62,7 +64,10 @@ namespace aruco
          void toMat(uint64_t code, int nbits_sq, cv::Mat& out);
         int _nsubdivisions=0;
         float _max_correction_rate;
+        std::string dicttypename;
         std::map<uint32_t,std::vector<Dictionary*>> nbits_dict;
+        //obfuscate end
+
     };
 }
 #endif

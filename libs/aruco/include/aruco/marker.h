@@ -55,6 +55,8 @@ or implied, of Rafael Muñoz Salinas.
         cv::Mat Rvec, Tvec;
         //additional info about the dictionary
         std::string dict_info;
+        //points of the contour
+        vector<cv::Point> contourPoints;
 
         /**
          */
@@ -129,6 +131,9 @@ or implied, of Rafael Muñoz Salinas.
         /**Returns the area
          */
         float getArea() const;
+        /**Returns radius of enclosing circle
+         */
+        float getRadius()const;
         /**compares ids
          */
         bool operator==(const Marker& m) const
@@ -177,6 +182,9 @@ or implied, of Rafael Muñoz Salinas.
               return get3DPoints(ssize);
           }
 
+          //returns the SE3 (4x4) transform matrix
+
+          cv::Mat getTransformMatrix()const;
     private:
         void rotateXAxis(cv::Mat& rotation);
     };

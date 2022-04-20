@@ -12,6 +12,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\ofxArUco.h" />
+    <ClInclude Include="..\Test_MultiThreading\src\aruco_nano.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\ofxAruco.cpp" />

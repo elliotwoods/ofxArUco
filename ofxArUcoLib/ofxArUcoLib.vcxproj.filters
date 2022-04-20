@@ -9,6 +9,9 @@
     <ClInclude Include="..\src\ofxArUco.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="..\Test_MultiThreading\src\aruco_nano.h">
+      <Filter>src</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\ofxAruco.cpp">
